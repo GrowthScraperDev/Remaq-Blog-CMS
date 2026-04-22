@@ -43,6 +43,11 @@ export const blogCollection = buildCollection({
             validation: { required: true },
             dataType: "string"
         },
+        excerpt: {
+            name: "Blog Short Description",
+            validation: { required: true },
+            dataType: "string"
+        },
         header_image:{
             name: "Header image Link(URL)",
             validation: { required: true },
@@ -55,20 +60,6 @@ export const blogCollection = buildCollection({
             defaultValue: "", // ✅ IMPORTANT
             dataType: "string",  // Changed from 'array' to 'string'
             markdown: true , // Enables Markdown support for rich text formatting
-            Field: ({ value, setValue }) => {
-
-                const handleChange = (val: string) => {
-                  const clean = val.replace(/\bundefined\b/g, "");
-                  setValue(clean);
-                };
-            
-                return (
-                  <textarea
-                    value={value || ""}
-                    onChange={(e) => handleChange(e.target.value)}
-                  />
-                );
-              }
         }, 
         faqs: {
             name: "FAQs",
@@ -137,7 +128,35 @@ export const blogCollection = buildCollection({
                 dataType: "string",
                 previewAsTag: true
             }
-        }
+        },
+        schema: {
+            name: "Schemas",
+            dataType: "array",
+            of: {
+              dataType: "map",
+              properties: {
+                title: {
+                  name: "Schema Title",
+                  dataType: "string"
+                },
+                type: {
+                  name: "Schema Type",
+                  dataType: "string",
+                  enumValues: {
+                    faq: "FAQ Schema",
+                    article: "Article Schema",
+                    product: "Product Schema",
+                    custom: "Custom JSON"
+                  }
+                },
+                json: {
+                  name: "Schema JSON",
+                  dataType: "string",
+                  multiline: true
+                }
+              }
+            }
+          }
     },
     initialFilter: {
         status: ["==", "published"]
