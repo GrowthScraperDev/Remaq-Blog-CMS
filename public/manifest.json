@@ -1,0 +1,20 @@
+{
+  "short_name": "Leo Prime Website CMS",
+  "name": "Leo Prime Website CMS",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg"
+    },
+    {
+      "src": "logo.svg",
+      "type": "image/svg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "fullscreen",
+  "theme_color": "#0070f4",
+  "background_color": "#ffffff"
+}
