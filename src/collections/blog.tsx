@@ -52,8 +52,23 @@ export const blogCollection = buildCollection({
             name: "Blog Content",
             description: "Content blocks for the blog entry",
             validation: { required: true },
+            defaultValue: "", // ✅ IMPORTANT
             dataType: "string",  // Changed from 'array' to 'string'
-            markdown: true  // Enables Markdown support for rich text formatting
+            markdown: true , // Enables Markdown support for rich text formatting
+            Field: ({ value, setValue }) => {
+
+                const handleChange = (val: string) => {
+                  const clean = val.replace(/\bundefined\b/g, "");
+                  setValue(clean);
+                };
+            
+                return (
+                  <textarea
+                    value={value || ""}
+                    onChange={(e) => handleChange(e.target.value)}
+                  />
+                );
+              }
         }, 
         faqs: {
             name: "FAQs",
@@ -104,6 +119,11 @@ export const blogCollection = buildCollection({
             name: "Reviewed",
             dataType: "boolean"
         },
+        author: {
+            name: "Author",
+            validation: { required: true },
+            dataType: "string"
+        },
         category: {
             name: "Category",
             validation: { required: true },
@@ -121,5 +141,6 @@ export const blogCollection = buildCollection({
     },
     initialFilter: {
         status: ["==", "published"]
-    }
+    },
+    
 });
