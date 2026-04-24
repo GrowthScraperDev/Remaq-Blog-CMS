@@ -61,6 +61,20 @@ export const blogCollection = buildCollection({
             dataType: "string",  // Changed from 'array' to 'string'
             markdown: true , // Enables Markdown support for rich text formatting
         }, 
+        table_content: {
+            name: "Difference Table Content",
+            description: "Content blocks for the blog table entry",
+            defaultValue: "", // ✅ IMPORTANT
+            dataType: "string",  // Changed from 'array' to 'string'
+            markdown: true , // Enables Markdown support for rich text formatting
+        }, 
+        blog_content: {
+            name: "Blog Content(After Table)",
+            description: "Content blocks for the blog entry",
+            defaultValue: "", // ✅ IMPORTANT
+            dataType: "string",  // Changed from 'array' to 'string'
+            markdown: true , // Enables Markdown support for rich text formatting
+        }, 
         faqs: {
             name: "FAQs",
             description: "Frequently asked questions",
