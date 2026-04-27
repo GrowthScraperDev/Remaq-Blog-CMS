@@ -50,11 +50,10 @@ export const blogCollection = buildCollection({
         },
         header_image:{
             name: "Header image Link(URL)",
-            validation: { required: true },
             dataType: "string"
         },
-        content: {
-            name: "Blog Content",
+        blog_content_1: {
+            name: "Blog Content(Before Table)",
             description: "Content blocks for the blog entry",
             validation: { required: true },
             defaultValue: "", // ✅ IMPORTANT
@@ -68,7 +67,7 @@ export const blogCollection = buildCollection({
             dataType: "string",  // Changed from 'array' to 'string'
             markdown: true , // Enables Markdown support for rich text formatting
         }, 
-        blog_content: {
+        blog_content_2: {
             name: "Blog Content(After Table)",
             description: "Content blocks for the blog entry",
             defaultValue: "", // ✅ IMPORTANT
@@ -120,20 +119,12 @@ export const blogCollection = buildCollection({
             dataType: "date",
             clearable: true
         },
-        reviewed: {
-            name: "Reviewed",
-            dataType: "boolean"
-        },
-        author: {
-            name: "Author",
-            validation: { required: true },
-            dataType: "string"
-        },
         category: {
             name: "Category",
-            validation: { required: true },
-            dataType: "string"
-        },
+            dataType: "reference",
+            path: "category", // 👈 MUST match your category collection path
+            validation: { required: true }
+          },
         tags: {
             name: "Tags",
             description: "Example of generic array",
@@ -171,9 +162,6 @@ export const blogCollection = buildCollection({
               }
             }
           }
-    },
-    initialFilter: {
-        status: ["==", "published"]
     },
     
 });
