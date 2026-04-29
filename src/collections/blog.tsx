@@ -52,6 +52,20 @@ export const blogCollection = buildCollection({
             name: "Header image Link(URL)",
             dataType: "string"
         },
+        image_difference: {
+            name: "Image Difference Content",
+            dataType: "map",
+            properties: {
+                left_side: {
+                    name: "Left Side Content",
+                    dataType: "string",
+                },
+                right_side: {
+                    name: "Right Side Content",
+                    dataType: "string",
+                },
+            }
+        },
         blog_content_1: {
             name: "Blog Content(Before Table)",
             description: "Content blocks for the blog entry",
