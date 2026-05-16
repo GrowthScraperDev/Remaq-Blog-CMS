@@ -30,6 +30,7 @@ import { firebaseConfig } from "./firebase_config";
 import { blogCollection } from "./collections/blog";
 import CustomFirebaseLogin from "./CustomFirebaseLogin";
 import { categoryCollection } from "./collections/categories";
+import { caseStudiesCollection } from "./collections/caseStudies";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
 
     const collections = useMemo(() => [
        blogCollection,
+       caseStudiesCollection,
        categoryCollection
     ], []);
 
